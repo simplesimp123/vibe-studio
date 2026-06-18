@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>邵润杰 Shao Runjie | AI & Full-Stack Developer Portfolio</title>
+    <meta name="description" content="邵润杰的个人品牌接单网站 - 中科院计算所AI硕士、ICCV 2025挑战赛冠军。提供前沿人工智能算法开发、计算机视觉、全栈软件开发与学术教学辅导服务。">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+    <!-- Custom Cursor -->
+    <div class="custom-cursor"></div>
+    <div class="custom-cursor-dot"></div>
+
+    <!-- Grid Overlay Background -->
+    <div class="grid-overlay"></div>
+    <div class="glow-orb orb-1"></div>
+    <div class="glow-orb orb-2"></div>
+    <div class="glow-orb orb-3"></div>
+
+    <!-- Navigation Bar -->
+    <header class="navbar glass">
+        <div class="navbar-container">
+            <a href="#" class="logo-group">
+                <span class="logo-text-top">Keep Going</span>
+                <span class="logo-divider">&</span>
+                <span class="logo-text-bottom">Never Settle</span>
+            </a>
+            <nav class="nav-links">
+                <a href="#about" class="nav-link">关于我</a>
+                <a href="#services" class="nav-link">服务中心</a>
+                <a href="#calculator" class="nav-link">预算估算</a>
+                <a href="#projects" class="nav-link">案例展示</a>
+                <a href="#contact" class="nav-link contact-btn glass-btn">联系咨询</a>
+            </nav>
+            <button class="mobile-menu-toggle" aria-label="Toggle Menu">
+                <i data-lucide="menu"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Nav Menu -->
+    <div class="mobile-nav glass">
+        <a href="#about" class="mobile-nav-link">关于我</a>
+        <a href="#services" class="mobile-nav-link">服务中心</a>
+        <a href="#calculator" class="mobile-nav-link">预算估算</a>
+        <a href="#projects" class="mobile-nav-link">案例展示</a>
+        <a href="#contact" class="mobile-nav-link mobile-contact-btn">联系咨询</a>
+    </div>
+
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section class="hero-section" id="home">
+            <div class="hero-container">
+                <div class="hero-info scroll-reveal">
+                    <div class="badge glass">
+                        <span class="pulse-dot"></span>
+                        <span class="badge-text">中科院计算所 · AI 硕士研究生</span>
+                    </div>
+                    <h1 class="hero-title">
+                        用前沿算法与全栈工程<br>
+                        <span class="gradient-text">构建数字未来</span>
+                    </h1>
+                    <p class="hero-description">
+                        我是<strong>邵润杰 (Shao Runjie)</strong>。致力于将深度学习、计算机视觉的前沿学术成果，转化为工业级的高性能全栈产品。在这里，AI 算法与极致交互完美融合。
+                    </p>
+                    <div class="hero-ctas">
+                        <a href="#contact" class="btn btn-primary">
+                            <span>开始合作</span>
+                            <i data-lucide="arrow-right"></i>
+                        </a>
+                        <a href="shao_resume.pdf" download="邵润杰-个人简历.pdf" class="btn btn-secondary glass">
+                            <i data-lucide="download"></i>
+                            <span>下载简历 (PDF)</span>
+                        </a>
+                    </div>
+                    <!-- Quick Stats -->
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <span class="stat-num" data-val="1">0</span>
+                            <span class="stat-label">ICCV 挑战赛冠军</span>
+                        </div>
+                        <div class="stat-item-divider"></div>
+                        <div class="stat-item">
+                            <span class="stat-num" data-val="5">0</span>
+                            <span class="stat-label">大厂/顶尖机构实习</span>
+                        </div>
+                        <div class="stat-item-divider"></div>
+                        <div class="stat-item">
+                            <span class="stat-num" data-val="10">0</span>
+                            <span class="stat-label">独立全栈/科研项目</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hero-visual scroll-reveal">
+                    <div class="portrait-card-container tilt-card">
+                        <div class="portrait-card glass">
+                            <div class="portrait-wrapper">
+                                <img src="shao_portrait.jpg" alt="邵润杰 - Shao Runjie" class="portrait-img">
+                            </div>
+                            <!-- Floating interactive bubbles -->
+                            <div class="floating-badge badge-top-left glass">
+                                <i data-lucide="trophy" class="icon-gold"></i>
+                                <span>ICCV 2025 冠军</span>
+                            </div>
+                            <div class="floating-badge badge-bottom-right glass">
+                                <i data-lucide="binary" class="icon-blue"></i>
+                                <span>Continual Learning</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Me Section -->
+        <section class="about-section" id="about">
+            <div class="section-container">
+                <div class="section-header scroll-reveal">
+                    <h2 class="section-title">教育与工作经历</h2>
+                    <p class="section-subtitle">学术底蕴与工业落地并重，兼备极强的前沿算法创新与全栈开发技能</p>
+                </div>
+
+                <div class="about-grid">
+                    <!-- Timeline Card -->
+                    <div class="timeline-container glass scroll-reveal">
+                        <h3 class="timeline-title-main">
+                            <i data-lucide="graduation-cap"></i>
+                            <span>教育背景</span>
+                        </h3>
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <div class="timeline-dot"></div>
+                                <div class="timeline-date">2025 - 至今</div>
+                                <div class="timeline-content">
+                                    <h4>中国科学院大学 中科院计算所</h4>
+                                    <p class="timeline-sub">硕士研究生 · 电子信息-人工智能 (中国电子联合培养)</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-dot"></div>
+                                <div class="timeline-date">2021 - 2025</div>
+                                <div class="timeline-content">
+                                    <h4>河海大学 大禹学院 (荣誉学院)</h4>
+                                    <p class="timeline-sub">计算机科学与技术 (保研推免至中科院计算所)</p>
+                                    <p class="timeline-desc">绩点 4.25/5 (均分 85.77/100, 排名 6/27)</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h3 class="timeline-title-main" style="margin-top: 2rem;">
+                            <i data-lucide="briefcase"></i>
+                            <span>研发履历</span>
+                        </h3>
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <div class="timeline-dot"></div>
+                                <div class="timeline-date">2026.03 - 2026.05</div>
+                                <div class="timeline-content">
+                                    <h4>中国电信人工智能研究院</h4>
+                                    <p class="timeline-sub">多模态算法实习生</p>
+                                    <p class="timeline-desc">提出并实现 HMoE-CT 分层专家检索框架，降低 80%+ 候选集规模；搭建 vision deep research 检索优化框架。</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-dot"></div>
+                                <div class="timeline-date">2025.12 - 2026.03</div>
+                                <div class="timeline-content">
+                                    <h4>OPPO</h4>
+                                    <p class="timeline-sub">多模态算法实习生</p>
+                                    <p class="timeline-desc">基于 LangGraph 设计大模型工具调用动态路由，实现致命 Badcase 清零，搭建 X-OmniClaw 架构。</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-dot"></div>
+                                <div class="timeline-date">2024.11 - 2025.01</div>
+                                <div class="timeline-content">
+                                    <h4>上海弘玑 Cyclone</h4>
+                                    <p class="timeline-sub">算法实习生</p>
+                                    <p class="timeline-desc">面向智能问数与标书业务，完成多智能体、Rerank 排序算法的筛选压测与生产线集成部署。</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Skills & Core Competency Card -->
+                    <div class="skills-container glass scroll-reveal">
+                        <h3 class="timeline-title-main">
+                            <i data-lucide="cpu"></i>
+                            <span>核心技术栈</span>
+                        </h3>
+                        <div class="skills-category">
+                            <div class="skills-cat-title">AI / 深度学习</div>
+                            <div class="skills-tags">
+                                <span class="tag">PyTorch</span>
+                                <span class="tag">持续学习 (Continual Learning)</span>
+                                <span class="tag">计算机视觉 (CV)</span>
+                                <span class="tag">大语言模型 (LLM)</span>
+                                <span class="tag">多智能体 (LangGraph)</span>
+                                <span class="tag">注意力机制优化</span>
+                            </div>
+                        </div>
+
+                        <div class="skills-category">
+                            <div class="skills-cat-title">软件开发 / 全栈</div>
+                            <div class="skills-tags">
+                                <span class="tag">Java</span>
+                                <span class="tag">Python</span>
+                                <span class="tag">C / C++</span>
+                                <span class="tag">Spring Boot</span>
+                                <span class="tag">SSM 框架</span>
+                                <span class="tag">Linux / WSL</span>
+                                <span class="tag">Git 版本控制</span>
+                            </div>
+                        </div>
+
+                        <div class="skills-category">
+                            <div class="skills-cat-title">人机交互 / 嵌入式</div>
+                            <div class="skills-tags">
+                                <span class="tag">ROS / 机器人技术</span>
+                                <span class="tag">3D 姿态估计</span>
+                                <span class="tag">混合现实 (MR / VR)</span>
+                                <span class="tag">边缘端模型部署</span>
+                            </div>
+                        </div>
+
+                        <!-- Mini Interactive Skill Chart -->
+                        <div class="radar-card glass">
+                            <div class="radar-header">
+                                <span>能力雷达评估</span>
+                                <i data-lucide="activity"></i>
+                            </div>
+                            <div class="radar-bars">
+                                <div class="bar-item">
+                                    <div class="bar-label"><span>AI 算法与前沿研究</span><span>95%</span></div>
+                                    <div class="bar-track"><div class="bar-fill" style="width: 95%;"></div></div>
+                                </div>
+                                <div class="bar-item">
+                                    <div class="bar-label"><span>全栈工程交付</span><span>90%</span></div>
+                                    <div class="bar-track"><div class="bar-fill" style="width: 90%;"></div></div>
+                                </div>
+                                <div class="bar-item">
+                                    <div class="bar-label"><span>人机交互与机器人</span><span>85%</span></div>
+                                    <div class="bar-track"><div class="bar-fill" style="width: 85%;"></div></div>
+                                </div>
+                                <div class="bar-item">
+                                    <div class="bar-label"><span>技术写作与教学指导</span><span>90%</span></div>
+                                    <div class="bar-track"><div class="bar-fill" style="width: 90%;"></div></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Service Portfolio & Pricing Section -->
+        <section class="services-section" id="services">
+            <div class="section-container">
+                <div class="section-header scroll-reveal">
+                    <h2 class="section-title">五大精品服务体系</h2>
+                    <p class="section-subtitle">基于前沿学术经验与大厂工程规范，为您提供高标准的定制开发与技术服务</p>
+                </div>
+
+                <div class="services-grid">
+                    <!-- Service 1 -->
+                    <div class="service-card glass tilt-card scroll-reveal">
+                        <div class="service-icon mint"><i data-lucide="brain-circuit"></i></div>
+                        <h3>人工智能算法开发</h3>
+                        <p class="service-desc">基于 PyTorch 框架进行深度学习模型训练与开发。承接目标检测、图像分割、模型压缩、边缘端部署，以及前沿学术算法的复现与优化。</p>
+                        <ul class="service-list">
+                            <li><i data-lucide="check-circle"></i> 模型高精度定制与训练</li>
+                            <li><i data-lucide="check-circle"></i> 边缘端推理优化 (CBPNet 架构)</li>
+                            <li><i data-lucide="check-circle"></i> 多模态大模型微调与 RAG 落地</li>
+                        </ul>
+                        <div class="service-price">
+                            <span class="price-label">参考起步价:</span>
+                            <span class="price-val">¥5,000</span>
+                        </div>
+                    </div>
+
+                    <!-- Service 2 -->
+                    <div class="service-card glass tilt-card scroll-reveal">
+                        <div class="service-icon blue"><i data-lucide="code-2"></i></div>
+                        <h3>前后端开发与系统定制</h3>
+                        <p class="service-desc">提供规范的软件工程生命周期交付。从系统设计、数据库规划到前后端编码实现与云部署。适配主流 Java Spring/SSM 体系。</p>
+                        <ul class="service-list">
+                            <li><i data-lucide="check-circle"></i> 企业级 SSM / Spring Boot 后端研发</li>
+                            <li><i data-lucide="check-circle"></i> 智能多智能体工具链 (LangGraph)</li>
+                            <li><i data-lucide="check-circle"></i> 响应式网页与微服务交付</li>
+                        </ul>
+                        <div class="service-price">
+                            <span class="price-label">参考起步价:</span>
+                            <span class="price-val">¥4,000</span>
+                        </div>
+                    </div>
+
+                    <!-- Service 3 -->
+                    <div class="service-card glass tilt-card scroll-reveal">
+                        <div class="service-icon purple"><i data-lucide="sparkles"></i></div>
+                        <h3>人机交互与视觉算法</h3>
+                        <p class="service-desc">结合 3D 姿态估计与传感器，打造沉浸式混合现实 (MR/VR) 人机交互应用。涵盖 ROS 机器人多端控制及底层通信开发。</p>
+                        <ul class="service-list">
+                            <li><i data-lucide="check-circle"></i> 2D/3D 人体关键点检测与特征跟踪</li>
+                            <li><i data-lucide="check-circle"></i> ROS 架构设计与算法仿真</li>
+                            <li><i data-lucide="check-circle"></i> MR 手势交互与计算资源优化</li>
+                        </ul>
+                        <div class="service-price">
+                            <span class="price-label">参考起步价:</span>
+                            <span class="price-val">¥5,000</span>
+                        </div>
+                    </div>
+
+                    <!-- Service 4 -->
+                    <div class="service-card glass tilt-card scroll-reveal">
+                        <div class="service-icon yellow"><i data-lucide="search-code"></i></div>
+                        <h3>文献搜索、数据分析与报告</h3>
+                        <p class="service-desc">针对学术及商业诉求，开展全网专业文献检索，提供包含数据清洗、可视化分析、趋势预测及高水准可行性调研报告在内的全套交付物。</p>
+                        <ul class="service-list">
+                            <li><i data-lucide="check-circle"></i> 结构化文献检索与总结报告</li>
+                            <li><i data-lucide="check-circle"></i> Python 数据分析与交互式大屏</li>
+                            <li><i data-lucide="check-circle"></i> 技术竞品与行业可行性评估书</li>
+                        </ul>
+                        <div class="service-price">
+                            <span class="price-label">参考起步价:</span>
+                            <span class="price-val">¥1,500</span>
+                        </div>
+                    </div>
+
+                    <!-- Service 5 -->
+                    <div class="service-card glass tilt-card scroll-reveal">
+                        <div class="service-icon pink"><i data-lucide="book-open"></i></div>
+                        <h3>课程开发与技术辅导</h3>
+                        <p class="service-desc">为学生群体、独立研究者及机构提供一对一编程答疑、大作业与毕设技术顾问。辅导内容包含 AI 算法、ROS 机器人及软硬联调。</p>
+                        <ul class="service-list">
+                            <li><i data-lucide="check-circle"></i> Python / PyTorch / Java 基础与实训</li>
+                            <li><i data-lucide="check-circle"></i> 开源项目与学术论文实验架构设计</li>
+                            <li><i data-lucide="check-circle"></i> 竞赛项目（如服务外包大赛）战术顾问</li>
+                        </ul>
+                        <div class="service-price">
+                            <span class="price-label">参考起步价:</span>
+                            <span class="price-val">¥300<small>/小时</small></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Pricing Calculator -->
+        <section class="calculator-section" id="calculator">
+            <div class="section-container">
+                <div class="calculator-card glass scroll-reveal">
+                    <div class="calc-header">
+                        <h2>
+                            <i data-lucide="calculator" class="icon-gradient"></i>
+                            <span>在线预算自助预估</span>
+                        </h2>
+                        <p>透明的定价体系，滑动选择参数实时预览合作估算</p>
+                    </div>
+
+                    <div class="calc-grid">
+                        <div class="calc-controls">
+                            <!-- Step 1: Service Type -->
+                            <div class="calc-group">
+                                <label class="calc-label">1. 服务类别选择</label>
+                                <div class="calc-chips">
+                                    <div class="calc-chip active" data-base="5000" data-service="ai">AI 算法开发</div>
+                                    <div class="calc-chip" data-base="4000" data-service="web">全栈软件开发</div>
+                                    <div class="calc-chip" data-base="5000" data-service="cv">交互与视觉</div>
+                                    <div class="calc-chip" data-base="1500" data-service="report">文献数据分析</div>
+                                    <div class="calc-chip" data-base="2400" data-service="teach">课程与辅导 (按8小时包计)</div>
+                                </div>
+                            </div>
+
+                            <!-- Step 2: Project Complexity (Slider) -->
+                            <div class="calc-group">
+                                <div class="calc-label-row">
+                                    <label class="calc-label">2. 复杂度及定制程度</label>
+                                    <span class="slider-badge" id="complexity-badge">标准交付 (x1.0)</span>
+                                </div>
+                                <input type="range" min="1" max="3" value="2" step="0.5" class="custom-slider" id="complexity-slider">
+                                <div class="slider-steps">
+                                    <span>概念原型 (MVP)</span>
+                                    <span>标准交付</span>
+                                    <span>深度定制/部署</span>
+                                </div>
+                            </div>
+
+                            <!-- Step 3: Extra Addons -->
+                            <div class="calc-group">
+                                <label class="calc-label">3. 附加交付选项 (可多选)</label>
+                                <div class="calc-checkboxes">
+                                    <label class="checkbox-item glass">
+                                        <input type="checkbox" id="addon-source" data-cost="1000">
+                                        <span class="custom-checkbox"></span>
+                                        <span>附赠完整源代码与详细部署文档 (+¥1,000)</span>
+                                    </label>
+                                    <label class="checkbox-item glass">
+                                        <input type="checkbox" id="addon-cloud" data-cost="1200">
+                                        <span class="custom-checkbox"></span>
+                                        <span>云端生产服务器代配置与运维1个月 (+¥1,200)</span>
+                                    </label>
+                                    <label class="checkbox-item glass">
+                                        <input type="checkbox" id="addon-urgent" data-cost="1500">
+                                        <span class="custom-checkbox"></span>
+                                        <span>极速加急通道 (缩短1/3周期) (+¥1,500)</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Result Display Panel -->
+                        <div class="calc-result-panel glass">
+                            <div class="result-title">预估项目费用</div>
+                            <div class="result-price-wrap">
+                                <span class="currency">¥</span>
+                                <span class="price-number" id="calc-price-display">5,000</span>
+                            </div>
+                            <div class="result-details">
+                                <p id="result-breakdown">基础价格: ¥5,000 | 复杂度系数: 1.0x</p>
+                                <p class="result-tip">提示：此价格为根据常规需求估算的基准价格，实际开发费用将在详细沟通需求后确定。</p>
+                            </div>
+                            <a href="#contact" class="btn btn-primary btn-block calc-cta-btn">
+                                <span>按此预算咨询我</span>
+                                <i data-lucide="message-square"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Showcase Section -->
+        <section class="projects-section" id="projects">
+            <div class="section-container">
+                <div class="section-header scroll-reveal">
+                    <h2 class="section-title">核心研发案例展示</h2>
+                    <p class="section-subtitle">每一项案例均提供代码细节、算法改进与完整的软件工程文档</p>
+                </div>
+
+                <!-- Filters -->
+                <div class="project-filters scroll-reveal">
+                    <button class="filter-btn active" data-filter="all">全部</button>
+                    <button class="filter-btn" data-filter="ai">AI算法/CV</button>
+                    <button class="filter-btn" data-filter="software">全栈系统</button>
+                    <button class="filter-btn" data-filter="interaction">交互/机器人</button>
+                </div>
+
+                <!-- Project Grid -->
+                <div class="project-grid">
+                    <!-- Project 1 -->
+                    <div class="project-card glass scroll-reveal" data-cat="ai">
+                        <div class="project-img-wrapper">
+                            <div class="project-gradient-bg g-1"></div>
+                            <span class="project-tag">AI/持续学习</span>
+                        </div>
+                        <div class="project-body">
+                            <h3>ICCV CLVision Challenge 冠军方案</h3>
+                            <p class="project-summary">应对动态变化的视觉指令任务，设计了层级化学习率调度与采样平衡算法。在强算力约束下达成最高模型平均精度，勇夺世界冠军队。</p>
+                            <button class="btn-text open-modal" data-project="iccv">
+                                <span>阅读技术细节</span>
+                                <i data-lucide="arrow-up-right"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Project 2 -->
+                    <div class="project-card glass scroll-reveal" data-cat="ai">
+                        <div class="project-img-wrapper">
+                            <div class="project-gradient-bg g-2"></div>
+                            <span class="project-tag">CV/学术在投</span>
+                        </div>
+                        <div class="project-body">
+                            <h3>边缘端持续反向传播提示网络 (CBPNet)</h3>
+                            <p class="project-summary">CCF-B在投第一作者成果。提出轻量化提示模块与重初始化低效神经元机制，解决边缘设备在多任务持续学习中的塑性损失瓶颈。</p>
+                            <button class="btn-text open-modal" data-project="cbpnet">
+                                <span>阅读技术细节</span>
+                                <i data-lucide="arrow-up-right"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Project 3 -->
+                    <div class="project-card glass scroll-reveal" data-cat="interaction">
+                        <div class="project-img-wrapper">
+                            <div class="project-gradient-bg g-3"></div>
+                            <span class="project-tag">MR/人机交互</span>
+                        </div>
+                        <div class="project-body">
+                            <h3>基于 3D 姿态估计的混合现实系统</h3>
+                            <p class="project-summary">省级创新项目优秀结题。基于普通摄像头，结合 TCFormer 实现人体骨骼Token聚类，有效缩减三维特征重构计算开销，支持流畅手势与肢体交互。</p>
+                            <button class="btn-text open-modal" data-project="mr">
+                                <span>阅读技术细节</span>
+                                <i data-lucide="arrow-up-right"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Project 4 -->
+                    <div class="project-card glass scroll-reveal" data-cat="software">
+                        <div class="project-img-wrapper">
+                            <div class="project-gradient-bg g-4"></div>
+                            <span class="project-tag">全栈开发/软著</span>
+                        </div>
+                        <div class="project-body">
+                            <h3>水利行业人才共享与外包协作平台</h3>
+                            <p class="project-summary">校级优秀结题项目，已发表管理学会论文并获软件著作权。独立负责需求梳理、Spring 后端架构设计与全栈部署交付。</p>
+                            <button class="btn-text open-modal" data-project="water">
+                                <span>阅读技术细节</span>
+                                <i data-lucide="arrow-up-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Form & Details Section -->
+        <section class="contact-section" id="contact">
+            <div class="section-container">
+                <div class="section-header scroll-reveal">
+                    <h2 class="section-title">启动您的项目</h2>
+                    <p class="section-subtitle">欢迎填写下方表单，或直接扫码添加我的个人微信，24小时内必定回复</p>
+                </div>
+
+                <div class="contact-grid">
+                    <!-- Contact Card Left -->
+                    <div class="contact-info-card glass scroll-reveal">
+                        <h3>与我建立联系</h3>
+                        <p class="contact-welcome">
+                            无论是前沿算法开发、课业技术辅导还是独立全栈网站，我都将为您提供高标准的工程体验。
+                        </p>
+
+                        <div class="contact-methods">
+                            <div class="method-item">
+                                <div class="method-icon"><i data-lucide="mail"></i></div>
+                                <div class="method-details">
+                                    <span class="method-label">工作邮箱</span>
+                                    <span class="method-val">3382572758@qq.com</span>
+                                </div>
+                                <button class="copy-btn glass-btn" data-copy="3382572758@qq.com" title="复制邮箱">
+                                    <i data-lucide="copy"></i>
+                                </button>
+                            </div>
+
+                            <div class="method-item">
+                                <div class="method-icon"><i data-lucide="message-circle"></i></div>
+                                <div class="method-details">
+                                    <span class="method-label">即时通讯</span>
+                                    <span class="method-val">添加微信进行即时沟通</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- WeChat QR area -->
+                        <div class="qr-container glass">
+                            <!-- Simulated Placeholder or instruction for QR -->
+                            <div class="qr-box">
+                                <img src="wechat_qr.png" alt="微信二维码 - 扫码添加邵润杰" class="qr-img">
+                            </div>
+                            <p class="qr-caption">扫一扫，添加微信好友直接对话</p>
+                        </div>
+                    </div>
+
+                    <!-- Contact Form Right -->
+                    <div class="contact-form-card glass scroll-reveal">
+                        <h3>提交您的需求</h3>
+                        <!-- Formspree Endpoint Placeholder -->
+                        <form id="contact-form" class="responsive-form" action="https://formspree.io/f/xoqgyyke" method="POST">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="client-name">您的称呼</label>
+                                    <input type="text" id="client-name" name="name" required placeholder="如：李先生 / 张教授">
+                                </div>
+                                <div class="form-group">
+                                    <label for="client-email">联系邮箱</label>
+                                    <input type="email" id="client-email" name="email" required placeholder="您的主要联系邮箱">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="service-select">所需服务类型</label>
+                                <select id="service-select" name="service">
+                                    <option value="ai">AI算法与边缘部署</option>
+                                    <option value="software">全栈网站与多智能体开发</option>
+                                    <option value="cv">3D交互与机器人控制</option>
+                                    <option value="report">数据可视化与学术调研</option>
+                                    <option value="teach">编程答疑与课程辅导</option>
+                                    <option value="other">其他定制化合作</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="client-msg">项目需求描述</label>
+                                <textarea id="client-msg" name="message" rows="5" required placeholder="请简要说明您的项目诉求、当前进度及期望的交付时间..."></textarea>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary btn-block submit-btn">
+                                <span>提交需求意向</span>
+                                <i data-lucide="send"></i>
+                            </button>
+                        </form>
+
+                        <!-- Success Alert Card -->
+                        <div class="form-success-alert glass hidden">
+                            <div class="success-icon"><i data-lucide="check-circle-2"></i></div>
+                            <h4>意向提交成功！</h4>
+                            <p>非常感谢您的咨询。我已收到您的需求邮件，将在稍后第一时间与您取得联系。</p>
+                            <button class="btn btn-secondary glass reset-form-btn">再次发送</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Project Details Modal -->
+    <div class="modal-overlay hidden" id="project-modal">
+        <div class="modal-card glass">
+            <button class="modal-close" aria-label="Close Modal"><i data-lucide="x"></i></button>
+            <div class="modal-body-content">
+                <!-- Content injected via JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="footer-container">
+            <p class="copyright">© 2026 Shao Runjie. All Rights Reserved. Powered by Vibe Coding.</p>
+            <div class="footer-links">
+                <a href="#about">经历</a>
+                <a href="#services">服务</a>
+                <a href="#projects">作品</a>
+                <a href="#contact">联系</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="index.js"></script>
+</body>
+</html>
