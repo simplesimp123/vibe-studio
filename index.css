@@ -93,44 +93,140 @@ img {
 }
 
 /* ==========================================================================
-   CUSTOM CURSOR (High Tech Interaction)
+   PREMIUM CURSOR SYSTEM
    ========================================================================== */
-.custom-cursor {
-    width: 30px;
-    height: 30px;
-    border: 1.5px solid var(--accent-blue);
-    border-radius: 50%;
+
+/* Trail canvas — full screen, sits behind cursor elements */
+#cursor-trail-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9997;
+}
+
+/* Outer rotating ring */
+.cursor-ring {
+    width: 44px;
+    height: 44px;
     position: fixed;
     transform: translate(-50%, -50%);
     pointer-events: none;
     z-index: 9999;
-    transition: width 0.2s, height 0.2s, background-color 0.2s, border-color 0.2s;
-    mix-blend-mode: difference;
+    animation: cursorRingSpin 4s linear infinite;
+    transition: width 0.35s var(--transition-smooth),
+                height 0.35s var(--transition-smooth),
+                opacity 0.25s;
 }
 
-.custom-cursor-dot {
-    width: 6px;
-    height: 6px;
-    background-color: var(--accent-mint);
-    border-radius: 50%;
+.cursor-ring svg {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+}
+
+.cursor-ring-svg {
+    fill: none;
+    stroke-width: 1.5;
+    stroke: url(#cursor-gradient-fallback);
+    /* Animated dashed stroke to simulate rotating segments */
+    stroke: var(--accent-blue);
+    stroke-dasharray: 30 12 8 12;
+    stroke-linecap: round;
+    opacity: 0.7;
+    transition: stroke-dasharray 0.3s, stroke 0.3s, opacity 0.3s;
+}
+
+@keyframes cursorRingSpin {
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* Center dot with breathing pulse */
+.cursor-dot {
     position: fixed;
     transform: translate(-50%, -50%);
     pointer-events: none;
     z-index: 10000;
+    transition: transform 0.2s var(--transition-smooth);
 }
 
-/* Cursor States on Hover */
-body.hover-interactive .custom-cursor {
-    width: 50px;
-    height: 50px;
-    background-color: rgba(0, 245, 212, 0.1);
-    border-color: var(--accent-mint);
-    mix-blend-mode: normal;
+.cursor-dot-core {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--primary-gradient);
+    box-shadow: 0 0 8px rgba(0, 245, 212, 0.6),
+                0 0 20px rgba(0, 180, 216, 0.3);
+    animation: dotPulse 2.5s ease-in-out infinite;
 }
 
-body.hover-interactive .custom-cursor-dot {
-    background-color: var(--accent-blue);
-    transform: translate(-50%, -50%) scale(1.5);
+@keyframes dotPulse {
+    0%, 100% { transform: scale(1); box-shadow: 0 0 8px rgba(0,245,212,0.6), 0 0 20px rgba(0,180,216,0.3); }
+    50%      { transform: scale(1.3); box-shadow: 0 0 14px rgba(0,245,212,0.8), 0 0 30px rgba(0,180,216,0.5); }
+}
+
+/* Soft ambient glow that follows cursor */
+.cursor-glow {
+    width: 200px;
+    height: 200px;
+    position: fixed;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 9996;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0, 245, 212, 0.06) 0%, rgba(0, 180, 216, 0.02) 40%, transparent 70%);
+    filter: blur(2px);
+    transition: width 0.4s var(--transition-smooth),
+                height 0.4s var(--transition-smooth),
+                opacity 0.3s;
+    opacity: 0.8;
+}
+
+/* ---- Hover interactive state ---- */
+body.hover-interactive .cursor-ring {
+    width: 64px;
+    height: 64px;
+}
+
+body.hover-interactive .cursor-ring-svg {
+    stroke: var(--accent-mint);
+    stroke-dasharray: 60 8;
+    opacity: 1;
+}
+
+body.hover-interactive .cursor-dot-core {
+    transform: scale(1.8);
+    background: var(--accent-mint);
+    box-shadow: 0 0 16px rgba(0, 245, 212, 0.9),
+                0 0 40px rgba(0, 245, 212, 0.4);
+    animation: none;
+}
+
+body.hover-interactive .cursor-glow {
+    width: 280px;
+    height: 280px;
+    opacity: 1;
+    background: radial-gradient(circle, rgba(0, 245, 212, 0.1) 0%, rgba(0, 180, 216, 0.04) 40%, transparent 70%);
+}
+
+/* ---- Click ripple effect ---- */
+.click-ripple {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 2px solid var(--accent-mint);
+    transform: translate(-50%, -50%) scale(0);
+    pointer-events: none;
+    z-index: 9998;
+    animation: rippleExpand 0.6s ease-out forwards;
+}
+
+@keyframes rippleExpand {
+    0%   { transform: translate(-50%, -50%) scale(0); opacity: 1; }
+    100% { transform: translate(-50%, -50%) scale(6); opacity: 0; }
 }
 
 /* ==========================================================================

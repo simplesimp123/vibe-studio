@@ -2,46 +2,165 @@
 lucide.createIcons();
 
 /* ==========================================================================
-   CUSTOM CURSOR SYSTEM
+   PREMIUM CURSOR SYSTEM
    ========================================================================== */
-const cursor = document.querySelector('.custom-cursor');
-const cursorDot = document.querySelector('.custom-cursor-dot');
-let mouseX = 0, mouseY = 0; // Target coordinates
-let cursorX = 0, cursorY = 0; // Current coordinates (lagging behind)
+const cursorRing = document.querySelector('.cursor-ring');
+const cursorDot  = document.querySelector('.cursor-dot');
+const cursorGlow = document.querySelector('.cursor-glow');
+const trailCanvas = document.getElementById('cursor-trail-canvas');
+const trailCtx   = trailCanvas.getContext('2d');
+
+// Canvas sizing
+function resizeTrailCanvas() {
+    trailCanvas.width  = window.innerWidth;
+    trailCanvas.height = window.innerHeight;
+}
+resizeTrailCanvas();
+window.addEventListener('resize', resizeTrailCanvas);
+
+// Tracking positions
+let mouseX = 0, mouseY = 0;
+let ringX  = 0, ringY  = 0;
+let glowX  = 0, glowY  = 0;
+
+// Trail particle pool
+const particles = [];
+const MAX_PARTICLES = 35;
+
+class TrailParticle {
+    constructor(x, y) {
+        this.x = x;
+        this.y = y;
+        this.size = Math.random() * 3 + 1.5;
+        this.life = 1.0;          // 1 → 0
+        this.decay = Math.random() * 0.025 + 0.015;
+        this.vx = (Math.random() - 0.5) * 0.4;
+        this.vy = (Math.random() - 0.5) * 0.4;
+        // Pick between mint and blue
+        this.color = Math.random() > 0.5
+            ? [0, 245, 212]    // mint
+            : [0, 180, 216];   // blue
+    }
+    update() {
+        this.life -= this.decay;
+        this.x += this.vx;
+        this.y += this.vy;
+        this.size *= 0.98;
+    }
+    draw(ctx) {
+        const [r, g, b] = this.color;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(${r},${g},${b},${this.life * 0.45})`;
+        ctx.fill();
+        // Glow layer
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size * 2.5, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(${r},${g},${b},${this.life * 0.08})`;
+        ctx.fill();
+    }
+}
+
+// Mouse tracking
+let lastEmitX = 0, lastEmitY = 0;
 
 document.addEventListener('mousemove', (e) => {
     mouseX = e.clientX;
     mouseY = e.clientY;
     
-    // Position dot immediately
+    // Position dot instantly (zero latency feel)
     cursorDot.style.left = mouseX + 'px';
-    cursorDot.style.top = mouseY + 'px';
+    cursorDot.style.top  = mouseY + 'px';
+    
+    // Emit trail particles when cursor moves enough distance
+    const dist = Math.hypot(mouseX - lastEmitX, mouseY - lastEmitY);
+    if (dist > 6) {
+        if (particles.length < MAX_PARTICLES) {
+            particles.push(new TrailParticle(mouseX, mouseY));
+        }
+        lastEmitX = mouseX;
+        lastEmitY = mouseY;
+    }
 });
 
-// Interpolation (lerp) loop for cursor outer ring to look ultra-smooth
+// Click ripple effect
+document.addEventListener('click', (e) => {
+    const ripple = document.createElement('div');
+    ripple.className = 'click-ripple';
+    ripple.style.left = e.clientX + 'px';
+    ripple.style.top  = e.clientY + 'px';
+    document.body.appendChild(ripple);
+    
+    // Spawn a burst of particles on click
+    for (let i = 0; i < 8; i++) {
+        const p = new TrailParticle(e.clientX, e.clientY);
+        p.vx = (Math.random() - 0.5) * 3;
+        p.vy = (Math.random() - 0.5) * 3;
+        p.size = Math.random() * 3 + 2;
+        p.decay = 0.03;
+        particles.push(p);
+    }
+    
+    ripple.addEventListener('animationend', () => ripple.remove());
+});
+
+// Main animation loop — ring/glow lerp + trail rendering
 function animateCursor() {
-    let dx = mouseX - cursorX;
-    let dy = mouseY - cursorY;
+    // Lerp ring (0.12 = smooth follow)
+    ringX += (mouseX - ringX) * 0.12;
+    ringY += (mouseY - ringY) * 0.12;
+    cursorRing.style.left = ringX + 'px';
+    cursorRing.style.top  = ringY + 'px';
     
-    cursorX += dx * 0.15; // 0.15 is the damping/lerp factor
-    cursorY += dy * 0.15;
+    // Lerp glow (even slower = dreamy lag)
+    glowX += (mouseX - glowX) * 0.06;
+    glowY += (mouseY - glowY) * 0.06;
+    cursorGlow.style.left = glowX + 'px';
+    cursorGlow.style.top  = glowY + 'px';
     
-    cursor.style.left = cursorX + 'px';
-    cursor.style.top = cursorY + 'px';
+    // Draw trail particles
+    trailCtx.clearRect(0, 0, trailCanvas.width, trailCanvas.height);
+    for (let i = particles.length - 1; i >= 0; i--) {
+        particles[i].update();
+        particles[i].draw(trailCtx);
+        if (particles[i].life <= 0) {
+            particles.splice(i, 1);
+        }
+    }
     
     requestAnimationFrame(animateCursor);
 }
 animateCursor();
 
-// Mouse hover interactions for links and buttons
+// Hover interactions — interactive elements
 const interactiveElements = document.querySelectorAll('a, button, .calc-chip, input, textarea, select, .checkbox-item, .copy-btn, .open-modal');
 interactiveElements.forEach(el => {
     el.addEventListener('mouseenter', () => {
         document.body.classList.add('hover-interactive');
     });
     el.addEventListener('mouseleave', () => {
-        document.body.classList.add('hover-interactive');
         document.body.classList.remove('hover-interactive');
+    });
+});
+
+// Magnetic snap — buttons pull cursor slightly toward their center
+document.querySelectorAll('.btn, .glass-btn, .filter-btn, .calc-chip').forEach(el => {
+    el.addEventListener('mousemove', (e) => {
+        const rect = el.getBoundingClientRect();
+        const cx = rect.left + rect.width / 2;
+        const cy = rect.top + rect.height / 2;
+        const pullStrength = 0.25;
+        
+        const magnetX = mouseX + (cx - mouseX) * pullStrength;
+        const magnetY = mouseY + (cy - mouseY) * pullStrength;
+        
+        cursorDot.style.left = magnetX + 'px';
+        cursorDot.style.top  = magnetY + 'px';
+    });
+    
+    el.addEventListener('mouseleave', () => {
+        cursorDot.style.left = mouseX + 'px';
+        cursorDot.style.top  = mouseY + 'px';
     });
 });
 
