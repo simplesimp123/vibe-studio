@@ -254,16 +254,17 @@ const statsObserver = new IntersectionObserver((entries, observer) => {
         if (entry.isIntersecting) {
             const target = entry.target;
             const finalVal = parseInt(target.getAttribute('data-val'));
+            const suffix = target.getAttribute('data-suffix') || '';
             let currentVal = 0;
-            const duration = 1500; // 1.5 seconds
-            const stepTime = Math.abs(Math.floor(duration / finalVal));
+            const duration = 1400; // 1.4 seconds
+            const stepTime = Math.max(40, Math.abs(Math.floor(duration / finalVal)));
             
             const timer = setInterval(() => {
                 currentVal += 1;
-                target.textContent = currentVal + (finalVal === 10 ? '+' : '');
+                target.textContent = currentVal + suffix;
                 if (currentVal >= finalVal) {
                     clearInterval(timer);
-                    target.textContent = finalVal + (finalVal === 10 ? '+' : '');
+                    target.textContent = finalVal + suffix;
                 }
             }, stepTime);
             
